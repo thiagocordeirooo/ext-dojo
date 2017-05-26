@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="/node_modules/angular/angular.js"></script>
+
+  <script src="/app/app.module.js"></script>
+  <script src="/app/controllers/todoListController.js"></script>
+  <script src="/app/services/todoList.service.js"></script>
+</head>
+
+<body ng-app="app">
+  <div class="container" ng-controller="todoListController">
+
+    <h1>TodoList</h1>
+
+    <div class="col-md-12">
+      <form>
+        <div class="form-group col-md-4">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" id="name" ng-model="task.name">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="desc">Description</label>
+          <input type="text" class="form-control" name="desc" id="desc" ng-model="task.desc">
+        </div>
+        <div class="col-md-2">
+          <button type="button" name="button" class="btn btn-primary" ng-click="adicionar(task)">Adicionar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-12">
+
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="task in tasksList">
+          <div class="col-md-12">
+            <h3>{{task.name}}</h3>
+          </div>
+
+          <div class="col-md-10">
+            <h6>{{task.desc}}</h6>
+          </div>
+          <div class="col-md-1">
+            <input class="form-control" type="checkbox" ng-model="task.status" style="max-width: 20px;" />
+          </div>
+          <div class="col-md-1">
+            <button class="form-control btn btn-danger" ng-click="confirmacaoDeletar(task)" style="max-width: 20px;" />
+          </div>
+          <div class="clearfix"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
